@@ -1,28 +1,36 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" routerLink="search">
-        <img src="../../../assets/icons/Project4_Team_Icon_No_Text_v1_2_White.svg" alt="" width="35" height="35"/>
-    </a>
-
-    <div class="w-100 pr-2" *ngIf="globalVars.currentPage == 'Results'">
-        <input class="form-control unrounded header-search-input w-100" placeholder="Search" aria-label="Search" 
-                value="{{globalVars.currentQuery}}" (keyup.enter)="executeHeaderSearch()" spellcheck="false" #headerSearch>
+    <div class="navbar-header">
+        <a class="navbar-brand" (click)="goToSearch()">
+            <img src="../../../assets/icons/Project4_Team_Icon_No_Text_v1_2_White.svg" alt="" width="35" height="35"/>
+        </a>
+    
+        <div class="w-100 d-flex pr-2 loader-transition-half" [class.loader-clear]="!showSearchBar" [class.loader-solid]="showSearchBar"
+                *ngIf="searchBarExists == true">
+            <input class="form-control unrounded header-search-input" placeholder="Search" aria-label="Search"
+                    value="{{globalVars.currentQuery}}" (keyup.enter)="executeHeaderSearch()" spellcheck="false" #headerSearch>
+            <button class="btn input-icon" (click)="executeHeaderSearch()">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </div>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
-            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
     <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item" *ngIf="globalVars.currentPage == 'Search' && globalVars.advancedSearchEnabled == false">
-                <a class="nav-link" (click)="globalVars.toggleAdvancedSearchEnabled()">Advanced Search</a>
+            <li class="nav-item loader-transition-half" [class.loader-clear]="!showAdvancedButton" [class.loader-solid]="showAdvancedButton"
+                    *ngIf="advancedButtonExists == true && globalVars.advancedSearchEnabled == false">
+                <a class="nav-link text-nowrap" (click)="globalVars.toggleAdvancedSearchEnabled()">Advanced Search</a>
             </li>
-            <li class="nav-item" *ngIf="globalVars.currentPage == 'Search' && globalVars.advancedSearchEnabled == true">
-                <a class="nav-link" (click)="globalVars.toggleAdvancedSearchEnabled()">Basic Search</a>
+            <li class="nav-item loader-transition-half" [class.loader-clear]="!showAdvancedButton" [class.loader-solid]="showAdvancedButton"
+                    *ngIf="advancedButtonExists == true && globalVars.advancedSearchEnabled == true">
+                <a class="nav-link text-nowrap" (click)="globalVars.toggleAdvancedSearchEnabled()">Basic Search</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="insights">Insights</a>
+                <a class="nav-link" (click)="goToInsights()">Insights</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" (click)="globalVars.helpActionCallback()">Help</a>

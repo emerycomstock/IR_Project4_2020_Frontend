@@ -17,3 +17,19 @@ html, body, .full {
 .unrounded {
     border-radius: 0;
 }
+
+.loader-transition {
+    transition: opacity 500ms;
+}
+
+.loader-transition-half {
+    transition: opacity 250ms;
+}
+
+.loader-clear {
+    opacity: 0;
+}
+
+.loader-solid {
+    opacity: 1;
+}

@@ -1,1 +1,5 @@
-<p>results works!</p>
+<div class="w-100 row pl-5">
+    <div class="col-8 p-2">
+        <app-search-result [config]="result" *ngFor="let result of searchResults"></app-search-result>
+    </div>
+</div>

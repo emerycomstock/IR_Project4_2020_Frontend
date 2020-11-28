@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GlobalVarsService } from 'src/app/services/global-vars.service';
 
 @Component({
@@ -8,10 +9,15 @@ import { GlobalVarsService } from 'src/app/services/global-vars.service';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  constructor(public globalVars: GlobalVarsService) { }
+  constructor(public globalVars: GlobalVarsService,
+              public router: Router) { }
 
   ngOnInit(): void {
     this.globalVars.currentPage = 'PageNotFound';
+    this.globalVars.completeLoading();
   }
 
+  public goToSearch() {
+    this.globalVars.startLoading(['search'], 'Search');
+  }
 }

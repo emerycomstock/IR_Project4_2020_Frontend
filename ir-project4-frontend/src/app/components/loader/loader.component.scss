@@ -1,0 +1,14 @@
+.loader-bg {
+    position: absolute;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.load-spinner {
+    width: 3rem;
+    height: 3rem;
+}

@@ -13,6 +13,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 // Components
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { SearchResultComponent } from './components/search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,11 @@ import { FooterComponent } from './components/footer/footer.component';
     SearchComponent,
     ResultsComponent,
     InsightsComponent,
+    PageNotFoundComponent,
     HeaderComponent,
     FooterComponent,
-    PageNotFoundComponent
+    LoaderComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
