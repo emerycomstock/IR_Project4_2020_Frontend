@@ -1,0 +1,23 @@
+.search-wrapper {
+    padding-top: 16vh;
+}
+
+.search-input-main {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+}
+
+.search-input-main input {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.search-icon {
+    color: white;
+}
+
+.search-icon-button:focus {
+    outline: none;
+    box-shadow: none;
+}
