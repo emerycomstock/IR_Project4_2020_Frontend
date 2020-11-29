@@ -8,13 +8,31 @@
     width: 60%;
 }
 
+.search-input-advanced {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .search-input-main input {
     flex-grow: 1;
     flex-shrink: 0;
 }
 
+.search-input-advanced-col {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
 .search-icon {
     color: white;
+}
+
+.search-advanced-button-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .search-icon-button:focus {

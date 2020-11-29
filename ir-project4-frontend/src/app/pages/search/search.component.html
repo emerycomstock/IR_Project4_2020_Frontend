@@ -1,12 +1,50 @@
 <div class="w-100 search-wrapper">
     <img src="../../../assets/icons/Project4_Team_Icon_v1_2_White.svg" class="d-block mr-auto ml-auto" alt="" width="200" height="200"/>
     <div class="w-100">
-        <div class="ml-auto mr-auto search-input-main">
+        <div class="ml-auto mr-auto search-input-main" *ngIf="!globalVars.advancedSearchEnabled">
             <input class="form-control unrounded" placeholder="Search" aria-label="Search" (keyup.enter)="executeBasicSearch()" 
                     spellcheck="false" #mainSearch>
             <button class="btn search-icon-button" (click)="executeBasicSearch()">
                 <i class="fa fa-search search-icon"></i>
             </button>
+        </div>
+        <div class="ml-auto mr-auto search-input-advanced" *ngIf="globalVars.advancedSearchEnabled">
+            <div class="row">
+                <div class="col-6 search-input-advanced-col">
+                    <input class="form-control unrounded small w-100" placeholder="Handle"
+                            spellcheck="false" #handleSearch>
+                </div>
+                <div class="col-6 search-input-advanced-col">
+                    <input class="form-control unrounded small w-100" placeholder="Username"
+                            spellcheck="false" #usernameSearch>
+                </div>
+            </div>
+            <div class="row pt-1 w-50">
+                <div class="col-12 search-input-advanced-col">
+                    <input class="form-control unrounded small w-100" placeholder="Content" 
+                            spellcheck="false" #contentSearch>
+                </div>
+            </div>
+            <div class="row pt-1">
+                <div class="col-6 search-input-advanced-col pr-2">
+                    <label class="text-light float-right mt-2">Language</label>
+                </div>
+                <div class="col-6 search-input-advanced-col pl-2">
+                    <select class="form-control unrounded" value="null" #languageSearch>
+                        <option value="null">All</option>
+                        <option value="en">EN</option>
+                        <option value="it">IT</option>
+                        <option value="hi">HI</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row pt-1 w-100">
+                <div class="col-6 offset-3 search-input-advanced-col search-advanced-button-wrapper">
+                    <button class="btn btn-outline-light" (click)="executeAdvancedSearch()">
+                        <span><i class="fa fa-search"></i> Search</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

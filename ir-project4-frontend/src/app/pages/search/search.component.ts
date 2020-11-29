@@ -18,4 +18,7 @@ export class SearchComponent implements OnInit {
   executeBasicSearch(): void {
     this.globalVars.executeSearch(this.mainSearchInput?.nativeElement?.value ?? undefined);
   }
+
+  executeAdvancedSearch(): void {
+  }
 }
