@@ -13,7 +13,6 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.globalVars.currentPage = 'Search';
-    this.globalVars.completeLoading();
   }
 
   executeBasicSearch(): void {

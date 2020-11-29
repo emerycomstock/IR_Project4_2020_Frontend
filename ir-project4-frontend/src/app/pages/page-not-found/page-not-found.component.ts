@@ -14,7 +14,6 @@ export class PageNotFoundComponent implements OnInit {
 
   ngOnInit(): void {
     this.globalVars.currentPage = 'PageNotFound';
-    this.globalVars.completeLoading();
   }
 
   public goToSearch() {

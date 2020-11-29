@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GlobalVarsService } from 'src/app/services/global-vars.service';
+import { Pagination } from 'src/app/models/pagination.model';
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss']
 })
-export class ResultsComponent implements OnInit {
-  public searchResults = [
+export class ResultsComponent {
+  public searchResults = [];
+  public searchResultsFull = [
     {
       handle: 'Jeff Jefferson',
       username: 'jjefferson',
@@ -46,13 +48,44 @@ export class ResultsComponent implements OnInit {
     },
   ];
 
+  public pageData: Pagination = new Pagination();
+  public resultsLoading: boolean = true;
+
   constructor(public globalVars: GlobalVarsService,
-              public route: ActivatedRoute) { }
+              public route: ActivatedRoute) {
+    this.route.params.subscribe(val => {
+      this.globalVars.currentQuery = decodeURIComponent(val.q);
+      this.globalVars.currentPage = 'Results';
+  
+      if (this.globalVars.currentQuery.toLowerCase() == 'full') {
+        this.setDemoData();
+      } else if (this.globalVars.currentQuery.toLowerCase() == 'loading') {
+        this.setLoading();
+      } else {
+        this.setNoResults();
+      }
+    });
+  }
 
-  ngOnInit(): void {
-    this.globalVars.currentQuery = decodeURIComponent(this.route.snapshot.paramMap.get('q'));
-    this.globalVars.currentPage = 'Results';
+  public setDemoData() {
+    this.searchResults = this.searchResultsFull;
+    this.pageData = new Pagination({
+      totalRecords: 5,
+      recordsPerPage: 5,
+      currentPage: 1
+    });
+    this.resultsLoading = false;
+  }
 
-    setTimeout(() => { this.globalVars.completeLoading() }, 1000);
+  public setLoading() {
+    this.searchResults = [];
+    this.pageData = new Pagination();
+    this.resultsLoading = true;
+  }
+
+  public setNoResults() {
+    this.searchResults = [];
+    this.pageData = new Pagination();
+    this.resultsLoading = false;
   }
 }

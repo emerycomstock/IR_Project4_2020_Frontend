@@ -14,16 +14,20 @@ html, body, .full {
     flex-direction: column;
 }
 
+.under-loader {
+    z-index: -1;
+}
+
 .unrounded {
     border-radius: 0;
 }
 
 .loader-transition {
-    transition: opacity 500ms;
+    transition: all 500ms;
 }
 
 .loader-transition-half {
-    transition: opacity 250ms;
+    transition: all 250ms;
 }
 
 .loader-clear {
@@ -32,4 +36,12 @@ html, body, .full {
 
 .loader-solid {
     opacity: 1;
+}
+
+.loader-w-0 {
+    width: 0;
+}
+
+.loader-w-full {
+    width: 100%;
 }

@@ -25,3 +25,13 @@
     padding-top: 0;
     padding-bottom: 0;
 }
+
+.loader-rel-above {
+    position: relative;
+    bottom: 50px;
+}
+
+.loader-rel-norm {
+    position: relative;
+    bottom: 0px;
+}

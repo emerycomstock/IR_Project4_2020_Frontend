@@ -1,5 +1,46 @@
-<div class="w-100 row pl-5">
-    <div class="col-8 p-2">
-        <app-search-result [config]="result" *ngFor="let result of searchResults"></app-search-result>
+<div class="main-results-wrapper">
+    <div class="w-100 results-wrapper row pl-5">
+        <div class="col-8 p-2">
+            <app-search-result [config]="result" *ngFor="let result of searchResults"></app-search-result>
+            <div class="no-results-wrapper" *ngIf="searchResults.length == 0 && resultsLoading == false">
+                <em class="text-light font-weight-bold">No results found, please try another query</em>
+                <hr class="bg-white w-100 m-1 under-loader">
+            </div>
+            <div class="no-results-wrapper" *ngIf="resultsLoading == true">
+                <em class="text-light font-weight-bold">
+                    <div class="spinner-border spinner-border-sm text-light" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    Loading Results
+                </em>
+                <hr class="bg-white w-100 m-1 under-loader">
+            </div>
+        </div>
+    </div>
+    
+    <div class="pagination-wrapper row">
+        <div class="col-12">
+            <hr class="bg-white w-100 mb-2 under-loader">
+        </div>
+        <div class="col-3">
+            <em class="small text-light font-weight-bold pl-4">Showing records {{pageData.pageFirstRecord}}-{{pageData.pageLastRecord}} of {{pageData.totalRecords}}</em>
+        </div>
+        <div class="pagination-button-wrapper col-6">
+            <button class="btn btn-sm btn-outline-light page-button unrounded" [disabled]="pageData.currentPage == 1 || pageData.currentPage == 0">
+                <i class="fa fa-angle-double-left"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-light page-button unrounded" [disabled]="pageData.currentPage == 1 || pageData.currentPage == 0">
+                <i class="fa fa-angle-left"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-light page-button unrounded" [disabled]="pageData.totalRecords == 0">
+                <p class="small font-weight-bold page-text">Page {{pageData.currentPage}} of {{pageData.totalPages}}</p>
+            </button>
+            <button class="btn btn-sm btn-outline-light page-button unrounded" [disabled]="pageData.currentPage == pageData.totalPages">
+                <i class="fa fa-angle-right"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-light page-button unrounded" [disabled]="pageData.currentPage == pageData.totalPages">
+                <i class="fa fa-angle-double-right"></i>
+            </button>
+        </div>
     </div>
 </div>

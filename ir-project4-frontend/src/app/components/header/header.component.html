@@ -4,8 +4,8 @@
             <img src="../../../assets/icons/Project4_Team_Icon_No_Text_v1_2_White.svg" alt="" width="35" height="35"/>
         </a>
     
-        <div class="w-100 d-flex pr-2 loader-transition-half" [class.loader-clear]="!showSearchBar" [class.loader-solid]="showSearchBar"
-                *ngIf="searchBarExists == true">
+        <div class="w-100 header-search-wrapper pr-2 loader-transition-half" [class.loader-rel-above]="!showSearchBar" [class.loader-rel-norm]="showSearchBar"
+                [attr.display-none]="searchBarExists == true">
             <input class="form-control unrounded header-search-input" placeholder="Search" aria-label="Search"
                     value="{{globalVars.currentQuery}}" (keyup.enter)="executeHeaderSearch()" spellcheck="false" #headerSearch>
             <button class="btn input-icon" (click)="executeHeaderSearch()">

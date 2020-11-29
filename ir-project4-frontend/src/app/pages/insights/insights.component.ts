@@ -12,7 +12,6 @@ export class InsightsComponent implements OnInit {
 
   ngOnInit(): void {
     this.globalVars.currentPage = "Insights";
-    this.globalVars.completeLoading();
   }
 
 }
